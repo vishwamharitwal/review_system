@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitBtn = document.getElementById('submit-btn');
     
     // Exact Google Review link provided by user
-    const GOOGLE_REVIEW_URL = "https://www.google.com/search?q=Fixa-+Kalwar+Puliya&kgmid=/g/11nr3j5cwj#lrd=0x396db30060ae5e9f:0xc89094caeff2001b,3,,,,";
+    const GOOGLE_REVIEW_URL = "https://www.google.com/search?sca_esv=de6c12fe2c86afe8&sxsrf=APpeQnt9T-Yu8JDuZXwV7QpJOcaxNFCsig:1787560048309&q=fixa-+kalwar+puliya+jaipur+reviews&uds=AJ5uw18mrVji5vJxoJIxXjPjg611vZNUV9JhToE5Bk8iYAQKAiX4fMjNOdKVK-bhHdMPIIS3YRdmOww005C5j7NjfcF7_fbn8Jy--eaoOwE6bS8IJhKNtNDoOAHMdW6hpKyLmI-7yI3o_CGtweSU1HWrPUloqSi4MVGHL0tCN3v-xXFTXkBrkjzswfj7vzqXhXM5ttevnw2vJrlSsNXFVrdhr0yK1iCH3jeDLnIpKUuE_CjYHYv2uA8O2pTtpbxBc5ckFv_wBD3HBSxiuJW1kioD1cu5MNmKt7ooCJFj_ebp2-1Mq31bk9BQxOiCyTmhnLRPb4i_tTFhJAANPx9eJCzS-VPscrEU8l_g0nHbOJCVA5YdY_JtIGE&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_yr6hhi5Kcf0EzoYCVljG8C7EwQS9HLktSThgM7gWmI5yCftrht2MbeLlcymcDpb53wbKiZZTMMaAMWLKPKoWubfU3II9dRqdVphjStIU6Fa3OX1Gw%3D%3D&sa=X&ved=2ahUKEwi9oMaN7LiWAxXQwjgGHT3BNsUQk8gLegQIGRAB&ictx=1&stq=1&cs=1&lei=cACMar2oEtCF4-EPvYLbqQw#ebo=2";
 
     function checkSubmitState() {
         if (currentRating > 0 && selectedMessage !== "") {
