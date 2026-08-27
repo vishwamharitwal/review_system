@@ -49,6 +49,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 highlightStars(currentRating);
                 ratingText.textContent = ratingDescriptions[currentRating];
                 renderChips(currentRating);
+                
+                if (currentRating === 5 && typeof confetti === 'function') {
+                    confetti({
+                        particleCount: 150,
+                        spread: 80,
+                        origin: { y: 0.6 },
+                        colors: ['#FFD700', '#FFA500', '#FF8C00', '#ffffff'] // Golden theme colors
+                    });
+                }
             }
         });
     });
