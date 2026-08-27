@@ -43,10 +43,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         star.addEventListener('click', function() {
-            currentRating = parseInt(this.getAttribute('data-value'));
-            highlightStars(currentRating);
-            ratingText.textContent = ratingDescriptions[currentRating];
-            checkSubmitState();
+            const newRating = parseInt(this.getAttribute('data-value'));
+            if (currentRating !== newRating) {
+                currentRating = newRating;
+                highlightStars(currentRating);
+                ratingText.textContent = ratingDescriptions[currentRating];
+                renderChips(currentRating);
+            }
         });
     });
 
@@ -62,20 +65,59 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Message Chip Logic
-    const chips = document.querySelectorAll('.chip');
+    const chipsContainer = document.getElementById('chips-container');
     let selectedMessage = "";
 
-    chips.forEach(chip => {
-        chip.addEventListener('click', function() {
-            // Deselect all
-            chips.forEach(c => c.classList.remove('selected'));
+    const commentsData = {
+        5: [
+            "Bhai kya mast collection hai, ekdum premium quality! 🔥",
+            "Amazing quality and perfect fit, completely satisfied with my purchase. 😍",
+            "Staff is very polite and helpful. Great shopping experience.",
+            "Price ke hisaab se kapde bahut badiya hain, totally worth it! 💯"
+        ],
+        4: [
+            "Kapde ache hain, bas thoda sa price zyada laga. ✨",
+            "Good collection, but mostly limited sizes available.",
+            "Nice fabric quality, will definitely visit again. 👍",
+            "Overall acha experience tha, thodi aur variety ho to maza aa jaye."
+        ],
+        // Default for 1, 2, 3 stars (WhatsApp feedback)
+        default: [
+            "Bhai size fit nahi aa raha hai, exchange karna hai.",
+            "Fabric quality was not up to the mark.",
+            "Quality thik nahi lagi, please improve karein.",
+            "Customer service experience wasn't great."
+        ]
+    };
+
+    function renderChips(rating) {
+        chipsContainer.innerHTML = '';
+        selectedMessage = "";
+        checkSubmitState();
+
+        if (rating === 0) return;
+
+        let chipsList = commentsData[rating] || commentsData.default;
+
+        chipsList.forEach(text => {
+            const btn = document.createElement('button');
+            btn.className = 'chip';
+            btn.textContent = text;
+            chipsContainer.appendChild(btn);
+        });
+    }
+
+    // Event delegation for dynamically added chips
+    chipsContainer.addEventListener('click', function(e) {
+        if (e.target.classList.contains('chip')) {
+            const allChips = chipsContainer.querySelectorAll('.chip');
+            allChips.forEach(c => c.classList.remove('selected'));
             
-            // Select this one
-            this.classList.add('selected');
-            selectedMessage = this.textContent;
+            e.target.classList.add('selected');
+            selectedMessage = e.target.textContent;
             
             checkSubmitState();
-        });
+        }
     });
 
     // Submit Logic
