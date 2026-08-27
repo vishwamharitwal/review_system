@@ -76,10 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "Price ke hisaab se kapde bahut badiya hain, totally worth it! 💯"
         ],
         4: [
-            "Kapde ache hain, bas thoda sa price zyada laga. ✨",
-            "Good collection, but mostly limited sizes available.",
-            "Nice fabric quality, will definitely visit again. 👍",
-            "Overall acha experience tha, thodi aur variety ho to maza aa jaye."
+            "Bohot badhiya shopping experience raha, kapde ekdum top notch hain! ✨",
+            "Great collection and very friendly staff. Loved the experience! 👍",
+            "Ache designs aur reasonable pricing, definitely recommend karunga! 💯",
+            "Really happy with the fabric quality and fitting. Will visit again! 😊"
         ],
         // Default for 1, 2, 3 stars (WhatsApp feedback)
         default: [
