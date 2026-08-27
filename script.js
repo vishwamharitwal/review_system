@@ -70,10 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const commentsData = {
         5: [
-            "Bhai kya mast collection hai, ekdum premium quality! 🔥",
-            "Amazing quality and perfect fit, completely satisfied with my purchase. 😍",
-            "Staff is very polite and helpful. Great shopping experience.",
-            "Price ke hisaab se kapde bahut badiya hain, totally worth it! 💯"
+            "Excellent collection and quality on Kalwar Road, Jaipur. Loved the overall experience.",
+            "Amazing clothing collection near Kalwar Puliya, Jhotwara. Great quality and service.",
+            "Really good collection with excellent quality. A great shopping experience in Jhotwara.",
+            "Loved the variety and quality of clothes. Great place for shopping around Kalwar Road.",
+            "Excellent service and collection near Kalwar Puliya, Jhotwara. Definitely worth visiting."
         ],
         4: [
             "Bohot badhiya shopping experience raha, kapde ekdum top notch hain! ✨",
