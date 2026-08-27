@@ -83,7 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
             "Good quality and a decent collection. Convenient place around Kalwar Road.",
             "Had a good experience here. Liked the collection and service near Kalwar Puliya."
         ],
-        // Default for 1, 2, 3 stars (WhatsApp feedback)
+        3: [
+            "Overall experience was okay. I’d like to share a little feedback.",
+            "My experience was decent overall. I have a few suggestions to share.",
+            "Overall it was a good experience, but there are a few things that could be better.",
+            "I had an average experience. I’d like to share some feedback with you.",
+            "Overall experience was okay. I’d appreciate it if you could hear my feedback."
+        ],
+        // Default for 1, 2 stars (WhatsApp feedback)
         default: [
             "Bhai size fit nahi aa raha hai, exchange karna hai.",
             "Fabric quality was not up to the mark.",
