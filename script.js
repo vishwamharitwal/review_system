@@ -70,11 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const commentsData = {
         5: [
-            "Excellent collection and quality on Kalwar Road, Jaipur. Loved the overall experience.",
-            "Amazing clothing collection near Kalwar Puliya, Jhotwara. Great quality and service.",
-            "Really good collection with excellent quality. A great shopping experience in Jhotwara.",
-            "Loved the variety and quality of clothes. Great place for shopping around Kalwar Road.",
-            "Excellent service and collection near Kalwar Puliya, Jhotwara. Definitely worth visiting."
+            "Really loved the collection and quality. Great experience on Kalwar Road, Jaipur.",
+            "Amazing collection near Kalwar Puliya, Jhotwara. Staff was helpful and service was great.",
+            "Had a really good shopping experience here. Nice variety and excellent quality.",
+            "Great place for clothing shopping in Jhotwara. Loved the collection and overall service.",
+            "Very happy with my purchase. Good quality, nice collection and a smooth shopping experience near Kalwar Road."
         ],
         4: [
             "Good collection and quality. Had a nice experience on Kalwar Road.",
