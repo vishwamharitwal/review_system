@@ -77,10 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "Excellent service and collection near Kalwar Puliya, Jhotwara. Definitely worth visiting."
         ],
         4: [
-            "Bohot badhiya shopping experience raha, kapde ekdum top notch hain! ✨",
-            "Great collection and very friendly staff. Loved the experience! 👍",
-            "Ache designs aur reasonable pricing, definitely recommend karunga! 💯",
-            "Really happy with the fabric quality and fitting. Will visit again! 😊"
+            "Good collection and quality. Had a nice experience on Kalwar Road.",
+            "Really liked the collection near Kalwar Puliya, Jhotwara. Good service too.",
+            "Nice variety and helpful staff. Overall, a good shopping experience in Jhotwara.",
+            "Good quality and a decent collection. Convenient place around Kalwar Road.",
+            "Had a good experience here. Liked the collection and service near Kalwar Puliya."
         ],
         // Default for 1, 2, 3 stars (WhatsApp feedback)
         default: [
