@@ -90,12 +90,19 @@ document.addEventListener("DOMContentLoaded", () => {
             "I had an average experience. I’d like to share some feedback with you.",
             "Overall experience was okay. I’d appreciate it if you could hear my feedback."
         ],
-        // Default for 1, 2 stars (WhatsApp feedback)
-        default: [
-            "Bhai size fit nahi aa raha hai, exchange karna hai.",
-            "Fabric quality was not up to the mark.",
-            "Quality thik nahi lagi, please improve karein.",
-            "Customer service experience wasn't great."
+        2: [
+            "The experience could have been better. I’d like to share my feedback.",
+            "I wasn’t fully satisfied with my experience. May I share my feedback?",
+            "I had a few concerns with my experience. I’d like to share them.",
+            "I’d like to share some feedback about my experience.",
+            "I feel the experience could be improved. I’d appreciate your attention."
+        ],
+        1: [
+            "I wasn’t satisfied with my experience. I’d like to share my feedback.",
+            "I had some concerns and would like to share my feedback.",
+            "My experience wasn’t as expected. I’d appreciate your attention.",
+            "I’d like to share my concerns respectfully.",
+            "I hope you’ll kindly hear my feedback."
         ]
     };
 
@@ -106,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (rating === 0) return;
 
-        let chipsList = commentsData[rating] || commentsData.default;
+        let chipsList = commentsData[rating] || [];
 
         chipsList.forEach(text => {
             const btn = document.createElement('button');
@@ -156,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (currentRating <= 3) {
             // WhatsApp Redirection
-            let message = `Hi, I rated your store ${currentRating} stars. My feedback is: ${selectedMessage}`;
+            let message = selectedMessage;
             let whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
             window.location.href = whatsappUrl;
         } else {
