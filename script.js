@@ -79,18 +79,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const commentsData = {
         5: [
-            "Really loved the collection and quality. Great experience on Kalwar Road, Jaipur.",
-            "Amazing collection near Kalwar Puliya, Jhotwara. Staff was helpful and service was great.",
-            "Had a really good shopping experience here. Nice variety and excellent quality.",
-            "Great place for clothing shopping in Jhotwara. Loved the collection and overall service.",
-            "Very happy with my purchase. Good quality, nice collection and a smooth shopping experience near Kalwar Road."
+            "Fixa Menswear Kalwar Puliya mein naya khula hai aur experience bahut acha raha. Suit stitching perfect thi. Zaroor try karein.",
+            "Readymade collection dekhne gaya tha yahan quality dekh ke khush ho gaya. Kalwar Puliya mein itna acha showroom hai pata hi nahi tha.",
+            "Fabric ki range bahut achhi hai Fixa Menswear mein. Staff ne bhi bahut acche se guide kiya. Jaipur mein acha option hai.",
+            "Office ke liye formal suit stitch karwaya fitting ekdum perfect aayi. Fixa Menswear Kalwar Puliya se bahut khush hoon.",
+            "Naya showroom hai par service established shop jaisi lagi. Fabric quality is price mein bahut achhi hai.",
+            "Tailor near me search karke Fixa Menswear tak pahuncha. Stitching quality dekh ke bahut satisfied hoon.",
+            "Kalwar Puliya mein Fixa Menswear ek acha addition hai. Readymade aur custom dono options milte hain ek hi jagah."
         ],
         4: [
-            "Good collection and quality. Had a nice experience on Kalwar Road.",
-            "Really liked the collection near Kalwar Puliya, Jhotwara. Good service too.",
-            "Nice variety and helpful staff. Overall, a good shopping experience in Jhotwara.",
-            "Good quality and a decent collection. Convenient place around Kalwar Road.",
-            "Had a good experience here. Liked the collection and service near Kalwar Puliya."
+            "Fixa Menswear mein suit stitch karwaya quality achhi thi. Overall acha experience raha.",
+            "Readymade shirts ka collection acha hai Fixa Menswear Kalwar Puliya mein. Satisfied hoon purchase se.",
+            "Fabric options achhe the Kalwar Puliya wale Fixa Menswear mein. Staff ne bhi acha guide kiya.",
+            "Naya showroom hai try kiya formal wear ke liye. Fitting achhi thi price bhi reasonable laga.",
+            "Fixa Menswear mein achha experience raha. Service bhi satisfactory thi overall.",
+            "Custom stitching ke liye gaya tha quality achhi mili. Recommend karunga Kalwar Puliya wale Fixa Menswear ko.",
+            "Kalwar Puliya mein Fixa Menswear acha option hai. Fabric aur fitting dono theek the overall."
         ],
         3: [
             "Overall experience was okay. I’d like to share a little feedback.",
