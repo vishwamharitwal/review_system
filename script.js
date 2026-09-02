@@ -9,38 +9,38 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 0.8,
         ease: "back.out(1.5)"
     })
-    .to(".welcome-text", {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power3.out"
-    }, "-=0.4")
-    // 2. Hold for a moment, then fade out the whole welcome screen
-    .to(".welcome-screen", {
-        opacity: 0,
-        duration: 0.6,
-        delay: 1.2,
-        ease: "power2.inOut",
-        onComplete: () => {
-            document.getElementById('welcome-screen').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling if needed
-        }
-    })
-    // 3. Animate Main Card In
-    .to(".card", {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out"
-    }, "-=0.2")
-    // 4. Animate Stars
-    .from(".stars i", {
-        opacity: 0,
-        scale: 0.5,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: "back.out(1.7)"
-    }, "-=0.4");
+        .to(".welcome-text", {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out"
+        }, "-=0.4")
+        // 2. Hold for a moment, then fade out the whole welcome screen
+        .to(".welcome-screen", {
+            opacity: 0,
+            duration: 0.6,
+            delay: 1.2,
+            ease: "power2.inOut",
+            onComplete: () => {
+                document.getElementById('welcome-screen').style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling if needed
+            }
+        })
+        // 3. Animate Main Card In
+        .to(".card", {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out"
+        }, "-=0.2")
+        // 4. Animate Stars
+        .from(".stars i", {
+            opacity: 0,
+            scale: 0.5,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "back.out(1.7)"
+        }, "-=0.4");
 
     // Removing chip GSAP animation to fix visibility issues
     gsap.set(".chip", { opacity: 1, y: 0 });
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
     const carouselDots = document.getElementById('carousel-dots');
-    
+
     let currentMessageIndex = 0;
     let currentChipsList = [];
     let selectedMessage = "";
@@ -157,10 +157,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateCarousel() {
         if (currentChipsList.length === 0) return;
-        
+
         carouselText.value = currentChipsList[currentMessageIndex];
-        selectedMessage = carouselText.value;
-        
+        selectedMessage = carouselText.value.trim();
+
+        if (currentChipsList[currentMessageIndex] === "") {
+            carouselText.placeholder = "Write your review here...";
+        } else {
+            carouselText.placeholder = "";
+        }
+
         // Update dots
         const dots = carouselDots.querySelectorAll('.dot');
         dots.forEach((dot, index) => {
@@ -178,9 +184,16 @@ document.addEventListener("DOMContentLoaded", () => {
         checkSubmitState();
     }
 
+    // Allow typing in the textarea
     carouselText.addEventListener('input', () => {
         selectedMessage = carouselText.value.trim();
+        currentChipsList[currentMessageIndex] = carouselText.value;
         checkSubmitState();
+    });
+
+    // Focus textarea when card is clicked
+    carouselCard.addEventListener('click', () => {
+        carouselText.focus();
     });
 
     prevBtn.addEventListener('click', () => {
@@ -203,16 +216,19 @@ document.addEventListener("DOMContentLoaded", () => {
         checkSubmitState();
 
         if (rating === 0) {
-            carouselText.value = "Please select a star rating first";
+            carouselText.value = "";
+            carouselText.placeholder = "Please select a star rating first";
             carouselControls.style.display = "none";
             return;
         }
 
-        currentChipsList = commentsData[rating] || [];
-        
+        const baseList = commentsData[rating] || [];
+        currentChipsList = ["", ...baseList];
+
         if (currentChipsList.length > 0) {
             carouselControls.style.display = "flex";
-            
+            carouselText.placeholder = "Write your review here...";
+
             // Create dots
             carouselDots.innerHTML = '';
             currentChipsList.forEach((_, index) => {
@@ -225,7 +241,8 @@ document.addEventListener("DOMContentLoaded", () => {
             updateCarousel();
         } else {
             carouselControls.style.display = "none";
-            carouselText.value = "No messages available";
+            carouselText.value = "";
+            carouselText.placeholder = "No messages available";
         }
     }
 
