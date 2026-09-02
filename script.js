@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkSubmitState() {
         if (currentRating > 0 && selectedMessage !== "") {
             submitBtn.removeAttribute('disabled');
-            if (currentRating <= 3) {
+            if (currentRating <= 2) {
                 submitBtn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Share Feedback';
             } else {
                 submitBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy & Post on Google';
@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.addEventListener('click', () => {
         if (submitBtn.disabled) return;
 
-        if (currentRating <= 3) {
+        if (currentRating <= 2) {
             // WhatsApp Redirection
             let message = selectedMessage;
             let whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
