@@ -1,20 +1,46 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // GSAP Intro Animation
-    gsap.to(".card", {
+    // GSAP Intro Animation with Welcome Screen
+    const tl = gsap.timeline();
+
+    // 1. Animate Welcome Screen
+    tl.to(".welcome-logo", {
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        ease: "back.out(1.5)"
+    })
+    .to(".welcome-text", {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power3.out"
+    }, "-=0.4")
+    // 2. Hold for a moment, then fade out the whole welcome screen
+    .to(".welcome-screen", {
+        opacity: 0,
+        duration: 0.6,
+        delay: 1.2,
+        ease: "power2.inOut",
+        onComplete: () => {
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling if needed
+        }
+    })
+    // 3. Animate Main Card In
+    .to(".card", {
         opacity: 1,
         y: 0,
         duration: 0.8,
         ease: "power3.out"
-    });
-
-    gsap.from(".stars i", {
+    }, "-=0.2")
+    // 4. Animate Stars
+    .from(".stars i", {
         opacity: 0,
         scale: 0.5,
         duration: 0.5,
         stagger: 0.1,
-        delay: 0.3,
         ease: "back.out(1.7)"
-    });
+    }, "-=0.4");
 
     // Removing chip GSAP animation to fix visibility issues
     gsap.set(".chip", { opacity: 1, y: 0 });
