@@ -175,6 +175,10 @@ h2 {
     resize: none;
     outline: none;
     pointer-events: auto;
+    position: relative;
+    z-index: 10;
+    user-select: auto;
+    -webkit-user-select: auto;
 }
 
 #carousel-text::placeholder {
