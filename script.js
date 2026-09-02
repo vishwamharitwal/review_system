@@ -158,8 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateCarousel() {
         if (currentChipsList.length === 0) return;
         
-        carouselText.textContent = currentChipsList[currentMessageIndex];
-        selectedMessage = currentChipsList[currentMessageIndex];
+        carouselText.value = currentChipsList[currentMessageIndex];
+        selectedMessage = carouselText.value;
         
         // Update dots
         const dots = carouselDots.querySelectorAll('.dot');
@@ -177,6 +177,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         checkSubmitState();
     }
+
+    carouselText.addEventListener('input', () => {
+        selectedMessage = carouselText.value.trim();
+        checkSubmitState();
+    });
 
     prevBtn.addEventListener('click', () => {
         if (currentMessageIndex > 0) {
@@ -198,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         checkSubmitState();
 
         if (rating === 0) {
-            carouselText.textContent = "Please select a star rating first";
+            carouselText.value = "Please select a star rating first";
             carouselControls.style.display = "none";
             return;
         }
@@ -220,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateCarousel();
         } else {
             carouselControls.style.display = "none";
-            carouselText.textContent = "No messages available";
+            carouselText.value = "No messages available";
         }
     }
 
