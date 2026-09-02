@@ -33,23 +33,23 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     stars.forEach(star => {
-        star.addEventListener('mouseover', function() {
+        star.addEventListener('mouseover', function () {
             const val = parseInt(this.getAttribute('data-value'));
             highlightStars(val);
         });
 
-        star.addEventListener('mouseout', function() {
+        star.addEventListener('mouseout', function () {
             highlightStars(currentRating);
         });
 
-        star.addEventListener('click', function() {
+        star.addEventListener('click', function () {
             const newRating = parseInt(this.getAttribute('data-value'));
             if (currentRating !== newRating) {
                 currentRating = newRating;
                 highlightStars(currentRating);
                 ratingText.textContent = ratingDescriptions[currentRating];
                 renderChips(currentRating);
-                
+
                 if (currentRating === 5 && typeof confetti === 'function') {
                     confetti({
                         particleCount: 150,
@@ -73,35 +73,45 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Message Chip Logic
-    const chipsContainer = document.getElementById('chips-container');
+    // Carousel Logic
+    const carouselCard = document.getElementById('carousel-card');
+    const carouselText = document.getElementById('carousel-text');
+    const carouselControls = document.getElementById('carousel-controls');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const carouselDots = document.getElementById('carousel-dots');
+    
+    let currentMessageIndex = 0;
+    let currentChipsList = [];
     let selectedMessage = "";
 
     const commentsData = {
         5: [
-            "Fixa Menswear Kalwar Puliya mein naya khula hai aur experience bahut acha raha. Suit stitching perfect thi. Zaroor try karein.",
-            "Readymade collection dekhne gaya tha yahan quality dekh ke khush ho gaya. Kalwar Puliya mein itna acha showroom hai pata hi nahi tha.",
-            "Fabric ki range bahut achhi hai Fixa Menswear mein. Staff ne bhi bahut acche se guide kiya. Jaipur mein acha option hai.",
-            "Office ke liye formal suit stitch karwaya fitting ekdum perfect aayi. Fixa Menswear Kalwar Puliya se bahut khush hoon.",
-            "Naya showroom hai par service established shop jaisi lagi. Fabric quality is price mein bahut achhi hai.",
-            "Tailor near me search karke Fixa Menswear tak pahuncha. Stitching quality dekh ke bahut satisfied hoon.",
-            "Kalwar Puliya mein Fixa Menswear ek acha addition hai. Readymade aur custom dono options milte hain ek hi jagah."
+            "Fixa Menswear Kalwar Puliya mein bahut acha experience raha. Suit stitching perfect thi bahut khush hoon 😊",
+            "Jaipur mein achha tailor dhoondh raha tha, Kalwar Puliya mein Fixa Menswear mil gaya aur quality dekh ke impress ho gaya.",
+            "Readymade collection dekh ke impress ho gaya, quality top class hai. Kalwar Road se paas mein itna acha showroom hai pata hi nahi tha 👍",
+            "Wedding ke liye suit dhoondh rahe the, dost ne Fixa Menswear ka naam bataya Kalwar Puliya mein. Bahut acha decision raha wahan jaana.",
+            "Jhotwara se Kalwar Puliya jaana easy raha aur fabric quality dekh ke maza aa gaya. Staff bhi bahut acha tha.",
+            "Office wear ke liye Kalwar Puliya mein Fixa Menswear se best mila. Staff bahut helpful aur professional the ❤️",
+            "Fabric range dekh ke bahut khush hua, itni variety expect nahi ki thi. Fixa Menswear ko highly recommend karunga."
         ],
         4: [
-            "Fixa Menswear mein suit stitch karwaya quality achhi thi. Overall acha experience raha.",
-            "Readymade shirts ka collection acha hai Fixa Menswear Kalwar Puliya mein. Satisfied hoon purchase se.",
-            "Fabric options achhe the Kalwar Puliya wale Fixa Menswear mein. Staff ne bhi acha guide kiya.",
-            "Naya showroom hai try kiya formal wear ke liye. Fitting achhi thi price bhi reasonable laga.",
-            "Fixa Menswear mein achha experience raha. Service bhi satisfactory thi overall.",
-            "Custom stitching ke liye gaya tha quality achhi mili. Recommend karunga Kalwar Puliya wale Fixa Menswear ko.",
-            "Kalwar Puliya mein Fixa Menswear acha option hai. Fabric aur fitting dono theek the overall."
+            "Drive karte waqt Kalwar Puliya mein ye showroom dikha toh andar ruk gaya. Suit stitch karwaya, quality achhi thi.",
+            "Jaipur mein formal shirt stitch karwani thi, Kalwar Puliya mein Fixa Menswear se karwayi aur fitting achhi aayi 👍",
+            "Readymade shirts liye the yahan se, quality achhi lagi aur Kalwar Road se aana bhi easy tha.",
+            "Kalwar Puliya mein naya showroom khula hai, try kiya toh achha laga. Jhotwara wale dosto ko bhi bata diya 😊",
+            "Office ke liye kapde silwane the, Kalwar Puliya wale Fixa Menswear se kaam badhiya hua aur price bhi reasonable laga.",
+            "Fixa Menswear mein gaya tha, staff ka behavior bahut achha tha. Kalwar Puliya mein easily mil jaata hai.",
+            "Fabric achha dikhaya gaya aur stitching bhi neat thi. Jhotwara se paas mein Kalwar Puliya ke is showroom se achha option nahi milega."
         ],
         3: [
-            "Overall experience was okay. I’d like to share a little feedback.",
-            "My experience was decent overall. I have a few suggestions to share.",
-            "Overall it was a good experience, but there are a few things that could be better.",
-            "I had an average experience. I’d like to share some feedback with you.",
-            "Overall experience was okay. I’d appreciate it if you could hear my feedback."
+            "Fixa Menswear gaya tha Kalwar Puliya mein theek laga overall. Suit stitch karwaya tha kaam ho gaya time pe.",
+            "Kapde dekhne gaya tha yahan collection normal hai. Kalwar Road se paas hi hai toh nearby wale try kar sakte hain.",
+            "Formal shirt stitch karwayi thi kaam sahi tha. Jhotwara se Kalwar Puliya aana easy raha.",
+            "Bhai ne bataya tha naya menswear shop khula hai Kalwar Puliya mein gaya toh dekhne. Theek laga overall.",
+            "Jaipur mein fabric dikhwane gaya tha Kalwar Puliya wale Fixa Menswear mein. Kaam ho gaya jo chahiye tha.",
+            "Readymade section dekha tha average collection hai. Kalwar Puliya mein hi mil jaata hai jo chahiye tha.",
+            "Fixa Menswear mein gaya tha office wear ke liye sahi raha. Jhotwara se location easily accessible hai."
         ],
         2: [
             "The experience could have been better. I’d like to share my feedback.",
@@ -119,39 +129,78 @@ document.addEventListener("DOMContentLoaded", () => {
         ]
     };
 
-    function renderChips(rating) {
-        chipsContainer.innerHTML = '';
-        selectedMessage = "";
-        checkSubmitState();
-
-        if (rating === 0) return;
-
-        let chipsList = commentsData[rating] || [];
-
-        chipsList.forEach(text => {
-            const btn = document.createElement('button');
-            btn.className = 'chip';
-            btn.textContent = text;
-            chipsContainer.appendChild(btn);
+    function updateCarousel() {
+        if (currentChipsList.length === 0) return;
+        
+        carouselText.textContent = currentChipsList[currentMessageIndex];
+        selectedMessage = currentChipsList[currentMessageIndex];
+        
+        // Update dots
+        const dots = carouselDots.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            if (index === currentMessageIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
         });
+
+        // Update buttons state
+        prevBtn.disabled = currentMessageIndex === 0;
+        nextBtn.disabled = currentMessageIndex === currentChipsList.length - 1;
+
+        checkSubmitState();
     }
 
-    // Event delegation for dynamically added chips
-    chipsContainer.addEventListener('click', function(e) {
-        if (e.target.classList.contains('chip')) {
-            const allChips = chipsContainer.querySelectorAll('.chip');
-            allChips.forEach(c => c.classList.remove('selected'));
-            
-            e.target.classList.add('selected');
-            selectedMessage = e.target.textContent;
-            
-            checkSubmitState();
+    prevBtn.addEventListener('click', () => {
+        if (currentMessageIndex > 0) {
+            currentMessageIndex--;
+            updateCarousel();
         }
     });
 
+    nextBtn.addEventListener('click', () => {
+        if (currentMessageIndex < currentChipsList.length - 1) {
+            currentMessageIndex++;
+            updateCarousel();
+        }
+    });
+
+    function renderChips(rating) {
+        currentMessageIndex = 0;
+        selectedMessage = "";
+        checkSubmitState();
+
+        if (rating === 0) {
+            carouselText.textContent = "Please select a star rating first";
+            carouselControls.style.display = "none";
+            return;
+        }
+
+        currentChipsList = commentsData[rating] || [];
+        
+        if (currentChipsList.length > 0) {
+            carouselControls.style.display = "flex";
+            
+            // Create dots
+            carouselDots.innerHTML = '';
+            currentChipsList.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                if (index === 0) dot.classList.add('active');
+                carouselDots.appendChild(dot);
+            });
+
+            updateCarousel();
+        } else {
+            carouselControls.style.display = "none";
+            carouselText.textContent = "No messages available";
+        }
+    }
+
     // Submit Logic
     const submitBtn = document.getElementById('submit-btn');
-    
+
     // Exact Google Review link provided by user
     const GOOGLE_REVIEW_URL = "https://g.page/r/CRsA8u_KlJDIEBM/review";
 
@@ -173,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     submitBtn.addEventListener('click', () => {
         if (submitBtn.disabled) return;
-        
+
         if (currentRating <= 3) {
             // WhatsApp Redirection
             let message = selectedMessage;
@@ -186,9 +235,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const originalText = submitBtn.innerHTML;
                 submitBtn.innerHTML = `<span>Copied! Redirecting...</span> <i class="fa-solid fa-check"></i>`;
                 submitBtn.style.backgroundColor = "#10B981"; // Success green
-                
-                gsap.fromTo(submitBtn, 
-                    { scale: 0.95 }, 
+
+                gsap.fromTo(submitBtn,
+                    { scale: 0.95 },
                     { scale: 1, duration: 0.3, ease: "back.out(2)" }
                 );
 

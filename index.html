@@ -36,10 +36,16 @@
             </div>
 
             <div class="message-section">
-                <h2>Select a message</h2>
-                <div class="chips-container" id="chips-container">
-                    <p style="color: #525252; text-align: center; padding: 1rem; font-size: 0.95rem;">Please select a
-                        star rating first</p>
+                <h2 style="margin-bottom: 0.5rem; text-align: left; font-size: 0.95rem; color: #A3A3A3; font-weight: 400;">Suggested Prompts</h2>
+                <div class="carousel-container" id="carousel-container">
+                    <div class="carousel-card" id="carousel-card">
+                        <p id="carousel-text" style="color: #525252; text-align: center;">Please select a star rating first</p>
+                    </div>
+                    <div class="carousel-controls" id="carousel-controls" style="display: none;">
+                        <button id="prev-btn" class="nav-btn"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+                        <div class="dots" id="carousel-dots"></div>
+                        <button id="next-btn" class="nav-btn">Next <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
                 </div>
             </div>
 
