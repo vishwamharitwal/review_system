@@ -118,7 +118,7 @@ h2 {
     padding: 1.5rem 1rem;
     font-size: 0.95rem;
     text-align: center;
-    color: var(--text-main);
+    color: #FFFFFF !important;
     transition: all 0.3s ease;
     line-height: 1.5;
     min-height: 100px;
